@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://robojax.com/learn/arduino/?vid=robojax_wemos_Di-Mini -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax</title>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+
+        
+<link rel="stylesheet" href="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/atelier-forest-dark.css">
+<script src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/highlight.pack.js.download"></script>
+
+<!-- Magnific Popup core CSS file -->
+<link rel="stylesheet" href="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/jquery.magnific-popupcss">
+
+<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+<script src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/jquery-latest.min.js.download"></script>
+
+<!-- Magnific Popup core JS file -->
+<script src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/jquery.magnific-popup.js.download"></script>
+<script>
+
+$(document).ready(function() {
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
+			}
+		}
+	});
+});
+</script>
+<script>hljs.initHighlightingOnLoad();</script>        
+ 
+<script async="" src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/f.txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3181364286213397",
+    enable_page_level_ads: true
+  });
+</script>
+      
+    </head>
+    <body>
+	<div id="pomoFocusBannerPlaceholder" class="ui-draggable ui-draggable-handle" style="display: none;"><table><tr><td id="pavlokTaskSpan" class="pavlokInfoBar"></td><td id="pavlokTimerSpan" class="pavlokInfoBar"></td><td id="pavlokTogglerSpan"><img src="chrome-extension://hefieeppocndiofffcfpkbfnjcooacib/images/browser_action_16x16.png"></td></tr></table></div><p>
+	<a href="https://robojax.com/learn/arduino">Other Arduino Codes and Videos by Robojax</a></p>
+        <h1>Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino </h1>
+        <p> <iframe width="560" height="315" src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/4QpOErbx0nM.html" frameborder="0" allowfullscreen=""></iframe></p>
+		            
+<h2>Setting Up Wemos D1 Mini ESP8266 Wifi with Arduino</h2>
+<p>
+ This code is for video on how to start using D1 Mini Wifi development board with Arduino.
+</p>
+
+Boards manager link:  <pre><code class="cpp hljs">https:<span class="hljs-comment">//arduino.esp8266.com/stable/package_esp8266com_index.json  </span></code>  </pre>
+<p>keywords: NodeMCU , esp32, wifi</p>
+<h3>Resources for this sketch</h3>
+<ul>
+   <li><a target="_blank" href="https://wiki.wemos.cc/">Wemos.cc official Websit of D1 Mini</a></li>
+   <li><a target="_blank" href="https://github.com/esp8266/Arduino">ESP8266 Arduino Driver on Gethub</a></li>
+   <li><a target="_blank" href="https://www.espressif.com/sites/default/files/documentation/0a-esp8266ex_datasheet_en.pdf">ESP8266 Datasheet (pdf)</a></li>
+   <li><a target="_blank" href="http://bit.ly/rj-udemy">Robojax Arduino Course on Udemy</a></li>
+<li><a target="_blank" href="http://bit.ly/2ZnITLz">Get Early Access to my videos via Patreon</a></li>
+
+
+</ul>
+
+<h2>Basic Blink sketch using D1 Mini Wifi Development board</h2>
+ <pre><code class="cpp hljs">
+ <span class="hljs-comment">/*
+ * LED blink program testing D1 Mini Development board based on ESP8266
+ * blinks ON, OFF, ON, OFF, then long ON, OFF
+ * 
+ * Watch video instruction : https://youtu.be/4QpOErbx0nM
+ * Written by Ahmad Shamshiri on Aug 01, 2019
+ * at 17:42 in Ajax, Ontario, Canada
+ * for Robojax.com
+ * 
+ * Get this code and other Arduino codes from Robojax.com
+If you found this tutorial helpful, please support me so I can continue creating 
+content like this. You can support me on Patreon http://robojax.com/L/?id=63
+or make donation using PayPal http://robojax.com/L/?id=64
+*/</span>
+
+
+<span class="hljs-keyword">int</span> LEDpin = LED_BUILTIN;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
+  pinMode(LEDpin, OUTPUT);     <span class="hljs-comment">// Initialize the LEDpin pin as an output</span>
+}
+
+<span class="hljs-comment">// the loop function runs over and over again forever</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  digitalWrite(LEDpin, LOW);<span class="hljs-comment">// Turns the blue LED ON  (see video why)</span>
+  delay(<span class="hljs-number">300</span>);<span class="hljs-comment">// Wait for 300 milliseconds</span>
+  digitalWrite(LEDpin, HIGH);<span class="hljs-comment">// Turns the blue LED OFF  (see video why)</span>
+  delay(<span class="hljs-number">300</span>);<span class="hljs-comment">// Wait for 300 milliseconds  </span>
+  
+
+  digitalWrite(LEDpin, LOW);
+  delay(<span class="hljs-number">300</span>);
+  digitalWrite(LEDpin, HIGH);
+  delay(<span class="hljs-number">300</span>); 
+
+  digitalWrite(LEDpin, LOW);
+  delay(<span class="hljs-number">1000</span>);<span class="hljs-comment">// Wait for a second (keep it ON)</span>
+  digitalWrite(LEDpin, HIGH);
+  delay(<span class="hljs-number">1000</span>); <span class="hljs-comment">// Wait for a second (keep it OFF)</span>
+
+} </code>  </pre>
+
+ 
+ <h2>Basic Blink sketch with pin mapping using D1 Mini Wifi Development board</h2>
+ <pre><code class="cpp hljs">
+ <span class="hljs-comment">/*
+ * LED blink with pin Mapping for ESP8266 Di Mini
+Written By Ahmad Shamshiri for Robojax.com
+ in August 01, 2019 in Ajax, Ontario, Canada
+ * Watch video instruction : https://youtu.be/4QpOErbx0nM
+ * 
+ * Get this code and other Arduono codes from Robojax.com
+If you found this tutorial helpful, please support me so I can continue creating 
+content like this. You can support me on Patreon http://robojax.com/L/?id=63
+or make donation using PayPal http://robojax.com/L/?id=64
+*/</span>
+
+<span class="hljs-comment">//LED_BUILTIN</span>
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D0   = <span class="hljs-number">16</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D1   = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D2   = <span class="hljs-number">4</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D3   = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D4   = <span class="hljs-number">2</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D5   = <span class="hljs-number">14</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D6   = <span class="hljs-number">12</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D7   = <span class="hljs-number">13</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D8   = <span class="hljs-number">15</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D9   = <span class="hljs-number">3</span>;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">uint8_t</span> D10  = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">int</span> LEDpin = D7;
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span> </span>{
+  pinMode(LEDpin, OUTPUT);     <span class="hljs-comment">// Initialize the LEDpin pin as an output</span>
+}
+
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{
+  digitalWrite(LEDpin, LOW);<span class="hljs-comment">// Turns the blue LED ON (see video why)</span>
+  delay(<span class="hljs-number">300</span>);<span class="hljs-comment">// Wait for 300 milliseconds</span>
+  digitalWrite(LEDpin, HIGH);<span class="hljs-comment">// Turns the blue LED OFF  (see video why)</span>
+  delay(<span class="hljs-number">300</span>);<span class="hljs-comment">// Wait for 300 milliseconds  </span>
+  
+
+  digitalWrite(LEDpin, LOW);
+  delay(<span class="hljs-number">300</span>);
+  digitalWrite(LEDpin, HIGH);
+  delay(<span class="hljs-number">300</span>); 
+
+  digitalWrite(LEDpin, LOW);
+  delay(<span class="hljs-number">1000</span>);<span class="hljs-comment">// Wait for a second (keep it ON)</span>
+  digitalWrite(LEDpin, HIGH);
+  delay(<span class="hljs-number">1000</span>); <span class="hljs-comment">// Wait for a second (keep it OFF)</span>
+} </code>  </pre>				<p>If you found this tutorial helpful, please support me so I can continue creating content like this.  support me via PayPal <a href="https://paypal.me/robojaxTV"><br><img src="./Setting Up D1 Mini NodeMCU ESP8266 Wifi with Arduino - Robojax_files/PayPal-Donate-Button.png" width="200"></a></p>
+    
+
+
+</body></html>
